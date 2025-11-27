@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EP BUNYAMA - École Primaire Idjwi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+        }
+        .hero-section {
+            /* Remplacez par votre image de fond (1.jpg) */
+            background-image: url('1.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        /* Style pour masquer/afficher les différentes vues */
+        .page-view {
+            display: none;
+            min-height: 100vh;
+            padding-top: 6rem; /* Pour compenser la barre de navigation fixe */
+        }
+        .page-view.active {
+            display: block;
+        }
+        /* Amélioration visuelle pour les liens rapides */
+        .quick-link-card {
+            transition: all 0.3s ease;
+        }
+        .quick-link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <script>
+        // Variables WhatsApp (celles définies en début de code)
+        const WHATSAPP_NUMBER = '243971404824'; 
+        const WHATSAPP_MESSAGE_DON = 'Bonjour, je souhaite faire un don à l\'EP BUNYAMA ou obtenir plus d\'informations sur vos besoins.';
+        
+        // Fonction pour créer le lien WhatsApp
+        function getWhatsappLink(message) {
+            return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        }
+    </script>
+
+    <nav id="navbar" class="fixed top-0 left-0 w-full bg-white bg-opacity-95 shadow-lg z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
+            <a href="#" onclick="showView('home')" class="text-2xl font-bold text-teal-600 hover:text-teal-800 transition duration-150">EP BUNYAMA</a>
+            
+            <div id="nav-links" class="hidden flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 mt-3 md:mt-0 text-sm md:text-base w-full md:w-auto transition-all duration-300 overflow-hidden md:flex">
+                <a href="#" onclick="showView('home')" class="text-gray-600 hover:text-teal-600 font-medium transition duration-150 p-2 text-center md:text-left">Accueil</a>
+                <a href="#" onclick="showView('full-story')" class="text-gray-600 hover:text-teal-600 font-medium transition duration-150 p-2 text-center md:text-left">Notre Histoire</a>
+                <a href="#" onclick="showView('gallery-view')" class="text-gray-600 hover:text-teal-600 font-medium transition duration-150 p-2 text-center md:text-left">Galerie Photos</a>
+                <a href="#" onclick="showView('comite-sponsors')" class="text-gray-600 hover:text-teal-600 font-medium transition duration-150 p-2 text-center md:text-left">Comité & Sponsors</a>
+                <a href="#" onclick="showView('contact-view')" class="text-gray-600 hover:text-teal-600 font-medium transition duration-150 p-2 text-center md:text-left">Contact</a>
+            </div>
+            
+            <button class="md:hidden text-teal-600 p-2 rounded-lg hover:bg-gray-100" onclick="toggleMobileMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <div id="home" class="page-view active">
+            <section id="accueil" class="hero-section flex items-center justify-center min-h-screen pt-16">
+                <div class="bg-black bg-opacity-60 p-8 md:p-12 rounded-xl shadow-2xl max-w-4xl mx-4 text-center">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 text-shadow">
+                        Bienvenue à l'École Primaire BUNYAMA
+                    </h1>
+                    <p class="text-xl md:text-2xl text-white mb-8 text-shadow">
+                        Un phare d'espoir et d'éducation sur l'île d'Idjwi.
+                    </p>
+                    <a href="#" onclick="showView('contact-view')" class="inline-block bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 uppercase tracking-wider flex items-center justify-center mx-auto max-w-xs">
+                        Faire un Don / Nous Contacter
+                    </a>
+                </div>
+            </section>
+
+            <section id="quick-links" class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl font-extrabold text-center text-teal-800 mb-10">Accès Rapide</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        
+                        <a href="#" onclick="showView('gallery-view')" class="quick-link-card bg-white p-6 rounded-xl shadow-lg text-center border-b-4 border-teal-500 flex flex-col items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-teal-600 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-1-5v9m-11 5h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            <h3 class="text-xl font-bold mb-1">Galerie Photos</h3>
+                            <p class="text-gray-600">Découvrez la vie de l'école BUNYAMA en images.</p>
+                        </a>
+                        
+                        <a href="#" onclick="showView('comite-sponsors')" class="quick-link-card bg-white p-6 rounded-xl shadow-lg text-center border-b-4 border-teal-500 flex flex-col items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-teal-600 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20v-2c0-.656-.126-1.283-.356-1.857M17 20h-2m2-8a2 2 0 012 2v2M4 14V6a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2zm0 0H2v2a2 2 0 002 2h3.5M22 18h-2M15 16h-1a2 2 0 00-2 2v2M9 16H8a2 2 0 00-2 2v2m10-6a2 2 0 012 2v2M4 14v-2c0-.656.126-1.283.356-1.857M4 14h1m-1 0a2 2 0 002 2h1" /></svg>
+                            <h3 class="text-xl font-bold mb-1">Comité & Sponsors</h3>
+                            <p class="text-gray-600">Découvrez les gestionnaires de l'école et nos partenaires.</p>
+                        </a>
+
+                        <a href="#" onclick="showView('contact-view')" class="quick-link-card bg-white p-6 rounded-xl shadow-lg text-center border-b-4 border-teal-500 flex flex-col items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-teal-600 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 1a4 4 0 00-4-4H7a4 4 0 00-4 4v7a4 4 0 004 4h10a4 4 0 004-4v-7z" /></svg>
+                            <h3 class="text-xl font-bold mb-1">Nous Contacter / Don</h3>
+                            <p class="text-gray-600">Aidez-nous à améliorer l'école d'Idjwi dès aujourd'hui.</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="mission-summary" class="py-16 md:py-24 bg-white">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-4xl font-extrabold text-center text-teal-800 mb-12">Notre Mission</h2>
+                    <div class="flex flex-wrap lg:flex-nowrap gap-10 items-center">
+                        <div class="lg:w-1/2 flex justify-center order-2 lg:order-1">
+                            <img src="2.jpg" onerror="this.src='https://placehold.co/600x400/10b981/ffffff?text=Image+2'" alt="Élèves recevant des dons (Image 2)" class="rounded-xl shadow-2xl w-full max-w-lg h-auto transition-transform duration-500 hover:scale-[1.02]">
+                        </div>
+                        <div class="lg:w-1/2 order-1 lg:order-2">
+                            <h3 class="text-3xl font-semibold text-teal-600 mb-4">L'éducation pour tous à Idjwi</h3>
+                            <p class="mb-6 text-lg text-gray-700">
+                                L'École Primaire BUNYAMA est située au cœur d'un village pauvre sur l'île d'Idjwi. Notre combat quotidien est d'offrir aux enfants un environnement d'apprentissage digne, essentiel pour briser le cycle de la pauvreté.
+                            </p>
+                            <button onclick="showView('full-story')" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                                Voir la suite sur Notre Histoire & Nos Besoins
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="full-story" class="page-view bg-teal-50">
+            <section class="py-16 md:py-24">
+                <div class="container mx-auto px-6 max-w-4xl">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-center text-teal-800 mb-8 border-b-4 border-teal-600 pb-3">Notre Histoire : L'EP BUNYAMA, École du village d'Idjwi</h2>
+
+                    <img src="7.jpg" onerror="this.src='https://placehold.co/800x400/9333ea/ffffff?text=Image+7'" alt="Vue des bâtiments de l'école EP BUNYAMA" class="w-full h-auto object-cover rounded-xl shadow-lg mb-8">
+
+                    <h3 class="text-3xl font-bold text-teal-700 mb-4">Le Contexte : Une École située sur l'île d'Idjwi</h3>
+                    <p class="mb-6 text-gray-700 text-lg leading-relaxed">
+                        L'École Primaire BUNYAMA est située dans un village d'Idjwi, une région où les défis socio-économiques sont majeurs. le matériel pédagogique est insuffisant, et les enfants parcourent de longues distances pour venir apprendre sans abandonné.
+                    </p>
+
+                    <h3 class="text-3xl font-bold text-teal-700 mb-4">Notre Résilience et Nos Besoins</h3>
+                    <ul class="list-disc list-inside space-y-3 mb-6 text-gray-700 text-lg">
+                        <li class="pl-2">
+                            <span class="font-semibold text-red-600">Matériel Scolaire :</span> Des cahiers, des stylos, des manuels et des tableaux pour chaque classe sont des nécessités urgentes.
+                        </li>
+                        <li class="pl-2">
+                            <span class="font-semibold text-red-600">Cantine Scolaire :</span> L'absence de nourriture est un facteur d'abandon scolaire. Une cantine permettrait d'assurer au moins un repas par jour.
+                        </li>
+                    </ul>
+
+                    <div class="text-center mt-8">
+                        <a href="#" onclick="window.open(getWhatsappLink(WHATSAPP_MESSAGE_DON), '_blank')" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 uppercase tracking-wider flex items-center justify-center mx-auto max-w-xs">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.54 2 2.05 6.54 2.05 12.04c0 1.83.49 3.5.15 5.05l-1.02 3.73 3.82-1.01c1.47.37 3.06.57 4.67.57h.03c5.5 0 10.04-4.5 10.04-10.04C22.08 6.54 17.59 2 12.09 2zM12.04 20.25h-.03c-1.55 0-3.05-.41-4.38-1.16l-.31-.18-3.1 1.05 1.05-3.04-.2-.31c-.72-1.12-1.09-2.42-1.09-3.77 0-4.57 3.74-8.31 8.31-8.31s8.3 3.74 8.3 8.31c0 4.57-3.74 8.31-8.31 8.31zm3.17-5.02c-.17-.08-.98-.49-1.14-.55-.16-.06-.27-.09-.38.09-.12.2-.45.54-.55.65-.1.1-.21.11-.38.05s-.76-.28-1.45-.89c-.54-.48-.9-.94-1.2-1.47-.3-.52-.03-.48.2-.72.08-.09.18-.2.27-.3.09-.1.12-.17.18-.28.06-.12.02-.2-.05-.32-.07-.12-.38-.91-.52-1.25-.13-.32-.27-.27-.38-.27s-.23 0-.35.05c-.12.06-.2.18-.27.27-.07.09-.27.26-.41.43-.14.18-.29.41-.43.43-.14.02-.27.03-.52-.15s-.9-.33-1.28-.68c-.38-.34-.63-.78-.7-.91-.07-.12-.06-.21-.05-.38.02-.17.13-.39.18-.49.06-.1.12-.18.18-.28s.07-.18.1-.24.08-.1.16-.17c.07-.06.49-.12.87-.09.38.02.66.08.82.2.16.12.2.29.35.66.15.37.52 1.25.52 1.34s-.01.19-.07.3c-.06.12-.13.18-.21.27z"/></svg>
+                            Je veux faire un don (WhatsApp)
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <div id="gallery-view" class="page-view bg-white">
+            <section class="py-16 md:py-24">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-4xl font-extrabold text-center text-teal-800 mb-12">Notre École en Images : La Vie Quotidienne</h2>
+
+                    <p class="text-center text-lg text-gray-600 mb-10">
+                        Découvrez la vie de l'école à travers ces moments capturés sur l'île d'Idjwi.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div class="relative group overflow-hidden rounded-lg shadow-lg aspect-square">
+                            <img src="1.jpg" onerror="this.src='https://placehold.co/400x400/4c4c4c/ffffff?text=1'" alt="Distribution de matériel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute bottom-0 w-full bg-teal-700 bg-opacity-70 p-2 text-center text-white text-sm font-semibold">Distribution de bouillie (1)</div>
+                        </div>
+
+                        <div class="relative group overflow-hidden rounded-lg shadow-lg aspect-square">
+                            <img src="2.jpg" onerror="this.src='https://placehold.co/400x400/f59e0b/ffffff?text=2'" alt="Réception des Dons" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute bottom-0 w-full bg-teal-700 bg-opacity-70 p-2 text-center text-white text-sm font-semibold">Distribution de bouillie  (2)</div>
+                        </div>
+
+                        <div class="relative group overflow-hidden rounded-lg shadow-lg aspect-square">
+                            <img src="3.jpg" onerror="this.src='https://placehold.co/400x400/10b981/ffffff?text=3'" alt="Journée spéciale" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute bottom-0 w-full bg-teal-700 bg-opacity-70 p-2 text-center text-white text-sm font-semibold">Distribution de bouillie  (3)</div>
+                        </div>
+
+                        <div class="relative group overflow-hidden rounded-lg shadow-lg aspect-square">
+                            <img src="4.jpg" onerror="this.src='https://placehold.co/400x400/0ea5e9/ffffff?text=4'" alt="Nos élèves" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute bottom-0 w-full bg-teal-700 bg-opacity-70 p-2 text-center text-white text-sm font-semibold">Nos élèves (4)</div>
+                        </div>
+
+                        <div class="relative group overflow-hidden rounded-lg shadow-lg aspect-square">
+                            <img src="5.jpg" onerror="this.src='https://placehold.co/400x400/9333ea/ffffff?text=5'" alt="Fierté d'apprendre" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute bottom-0 w-full bg-teal-700 bg-opacity-70 p-2 text-center text-white text-sm font-semibold">Distribution de bouillie (5)</div>
+                        </div>
+
+                        <div class="relative group overflow-hidden rounded-lg shadow-lg aspect-square">
+                            <img src="6.jpg" onerror="this.src='https://placehold.co/400x400/f43f5e/ffffff?text=6'" alt="Leçons en extérieur" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute bottom-0 w-full bg-teal-700 bg-opacity-70 p-2 text-center text-white text-sm font-semibold">Distribution de bouillie  (6)</div>
+                        </div>
+
+                        <div class="relative group overflow-hidden rounded-lg shadow-lg aspect-square">
+                            <img src="7.jpg" onerror="this.src='https://placehold.co/400x400/f97316/ffffff?text=7'" alt="L'école BUNYAMA" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute bottom-0 w-full bg-teal-700 bg-opacity-70 p-2 text-center text-white text-sm font-semibold">L'école BUNYAMA en Construction(7)</div>
+                        </div>
+
+                        <div class="relative group overflow-hidden rounded-lg shadow-lg aspect-square">
+                            <img src="ENSEIGNANT.jpg" onerror="this.src='https://placehold.co/400x400/4c4c4c/ffffff?text=ENSEIGNANT'" alt="Notre équipe" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute bottom-0 w-full bg-teal-700 bg-opacity-70 p-2 text-center text-white text-sm font-semibold">Notre équipe (ENSEIGNANT)</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="comite-sponsors" class="page-view bg-gray-100">
+            <section class="py-16 md:py-24">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-4xl font-extrabold text-center text-teal-800 mb-12">Comité de Gestion et Partenaires de l'EP BUNYAMA</h2>
+
+                    <h3 class="text-3xl font-bold text-center text-blue-700 mb-8">Les Membres du Comité</h3>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
+
+                        <div class="bg-white rounded-xl shadow-xl p-6 text-center quick-link-card">
+                            <img src="dp.jpg" onerror="this.src='https://placehold.co/120x120/f97316/ffffff?text=Dir'" alt="Directeur" class="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full mx-auto mb-4 border-4 border-teal-600">
+                            <h4 class="text-lg md:text-xl font-bold text-gray-900 mb-1">Miracle Longo Ishara</h4>
+                            <p class="text-teal-600 font-semibold text-sm">Directeur de l'EP BUNYAMA</p>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-xl p-6 text-center quick-link-card">
+                            <img src="ENSEIGNANT.jpg" onerror="this.src='https://placehold.co/120x120/0ea5e9/ffffff?text=Ens'" alt="Représentant des Enseignants" class="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full mx-auto mb-4 border-4 border-teal-600">
+                            <h4 class="text-lg md:text-xl font-bold text-gray-900 mb-1">Image Des Enseignants</h4>
+                            <p class="text-teal-600 font-semibold text-sm">Les Enseignants</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl shadow-xl p-6 text-center quick-link-card">
+                            <img src="https://placehold.co/120x120/f59e0b/ffffff?text=Par" alt="Représentant des Parents" class="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full mx-auto mb-4 border-4 border-teal-600">
+                            <h4 class="text-lg md:text-xl font-bold text-gray-900 mb-1">Amani polepole </h4>
+                            <p class="text-teal-600 font-semibold text-sm">Président des Parents</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl shadow-xl p-6 text-center quick-link-card">
+                            <img src="egd.jpg" alt="Trésorier" class="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full mx-auto mb-4 border-4 border-teal-600">
+                            <h4 class="text-lg md:text-xl font-bold text-gray-900 mb-1">E.G.D</h4>
+                            <p class="text-teal-600 font-semibold text-sm">Eglise Gloire de Dieu</p>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-xl p-6 text-center quick-link-card">
+                            <img src="pip.png" alt="Trésorier" class="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full mx-auto mb-4 border-4 border-teal-600">
+                            <h4 class="text-lg md:text-xl font-bold text-gray-900 mb-1">PIPES INTERNATIONAL</h4>
+                            <p class="text-teal-600 font-semibold text-sm">https://pipesinternational.org</p>
+                        </div>
+                    </div>
+                    </div>
+                
+                    </div>
+
+                    <div class="mt-16 text-center p-8 bg-teal-600 rounded-xl shadow-inner">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Devenez un Sponsor de l'EP BUNYAMA !</h3>
+                        <p class="text-white mb-6 max-w-2xl mx-auto">
+                            Chaque contribution transforme la vie d'un enfant sur l'île d'Idjwi. Contactez-nous directement via WhatsApp pour toute question sur le sponsoring.
+                        </p>
+                        <a href="#" onclick="window.open(getWhatsappLink('Bonjour, je souhaite contacter l\'EP BUNYAMA pour le sponsoring.'), '_blank')" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 uppercase flex items-center justify-center mx-auto max-w-xs">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.54 2 2.05 6.54 2.05 12.04c0 1.83.49 3.5.15 5.05l-1.02 3.73 3.82-1.01c1.47.37 3.06.57 4.67.57h.03c5.5 0 10.04-4.5 10.04-10.04C22.08 6.54 17.59 2 12.09 2zM12.04 20.25h-.03c-1.55 0-3.05-.41-4.38-1.16l-.31-.18-3.1 1.05 1.05-3.04-.2-.31c-.72-1.12-1.09-2.42-1.09-3.77 0-4.57 3.74-8.31 8.31-8.31s8.3 3.74 8.3 8.31c0 4.57-3.74 8.31-8.31 8.31zm3.17-5.02c-.17-.08-.98-.49-1.14-.55-.16-.06-.27-.09-.38.09-.12.2-.45.54-.55.65-.1.1-.21.11-.38.05s-.76-.28-1.45-.89c-.54-.48-.9-.94-1.2-1.47-.3-.52-.03-.48.2-.72.08-.09.18-.2.27-.3.09-.1.12-.17.18-.28.06-.12.02-.2-.05-.32-.07-.12-.38-.91-.52-1.25-.13-.32-.27-.27-.38-.27s-.23 0-.35.05c-.12.06-.2.18-.27.27-.07.09-.27.26-.41.43-.14.18-.29.41-.43.43-.14.02-.27.03-.52-.15s-.9-.33-1.28-.68c-.38-.34-.63-.78-.7-.91-.07-.12-.06-.21-.05-.38.02-.17.13-.39.18-.49.06-.1.12-.18.18-.28s.07-.18.1-.24.08-.1.16-.17c.07-.06.49-.12.87-.09.38.02.66.08.82.2.16.12.2.29.35.66.15.37.52 1.25.52 1.34s-.01.19-.07.3c-.06.12-.13.18-.21.27z"/></svg>
+                            Contacter l'équipe via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="contact-view" class="page-view bg-white">
+            <section class="py-16 md:py-24">
+                <div class="container mx-auto px-6 max-w-3xl">
+                    <h2 class="text-4xl font-extrabold text-center text-teal-800 mb-8">Contactez-Nous / Faire un Don</h2>
+
+                    <div class="text-center mb-10 p-6 bg-green-50 border-2 border-green-300 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-bold text-green-700 mb-3">Contact Direct et Dons</h3>
+                        <p class="text-lg text-gray-700 mb-4">
+                            Pour une réponse rapide ou pour initier un don immédiatement, utilisez notre ligne directe WhatsApp.
+                        </p>
+                        <a href="#" onclick="window.open(getWhatsappLink(WHATSAPP_MESSAGE_DON), '_blank')" class="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 shadow-lg transform hover:scale-105">
+                            <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.54 2 2.05 6.54 2.05 12.04c0 1.83.49 3.5.15 5.05l-1.02 3.73 3.82-1.01c1.47.37 3.06.57 4.67.57h.03c5.5 0 10.04-4.5 10.04-10.04C22.08 6.54 17.59 2 12.09 2zM12.04 20.25h-.03c-1.55 0-3.05-.41-4.38-1.16l-.31-.18-3.1 1.05 1.05-3.04-.2-.31c-.72-1.12-1.09-2.42-1.09-3.77 0-4.57 3.74-8.31 8.31-8.31s8.3 3.74 8.3 8.31c0 4.57-3.74 8.31-8.31 8.31zm3.17-5.02c-.17-.08-.98-.49-1.14-.55-.16-.06-.27-.09-.38.09-.12.2-.45.54-.55.65-.1.1-.21.11-.38.05s-.76-.28-1.45-.89c-.54-.48-.9-.94-1.2-1.47-.3-.52-.03-.48.2-.72.08-.09.18-.2.27-.3.09-.1.12-.17.18-.28.06-.12.02-.2-.05-.32-.07-.12-.38-.91-.52-1.25-.13-.32-.27-.27-.38-.27s-.23 0-.35.05c-.12.06-.2.18-.27.27-.07.09-.27.26-.41.43-.14.18-.29.41-.43.43-.14.02-.27.03-.52-.15s-.9-.33-1.28-.68c-.38-.34-.63-.78-.7-.91-.07-.12-.06-.21-.05-.38.02-.17.13-.39.18-.49.06-.1.12-.18.18-.28s.07-.18.1-.24.08-.1.16-.17c.07-.06.49-.12.87-.09.38.02.66.08.82.2.16.12.2.29.35.66.15.37.52 1.25.52 1.34s-.01.19-.07.3c-.06.12-.13.18-.21.27z"/></svg>
+                            Discuter sur WhatsApp (0971404824)
+                        </a>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-center text-teal-700 mb-6">Ou Envoyez-Nous un Message par Email</h3>
+
+                    <div id="contact-message-box" class="hidden p-4 mb-4 rounded-lg text-center font-semibold transition-all duration-300" role="alert"></div>
+
+                    <form id="contact-form" class="bg-gray-100 p-8 rounded-xl shadow-2xl">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Votre Nom Complet</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-teal-500 focus:border-teal-500 transition duration-150">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Votre Adresse Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-teal-500 focus:border-teal-500 transition duration-150">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Votre Message (ou intention de sponsoring)</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-teal-500 focus:border-teal-500 transition duration-150"></textarea>
+                        </div>
+                        <button type="submit" id="submit-button" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-4 rounded-full transition duration-300 shadow-lg flex items-center justify-center">
+                            Envoyer le Message
+                        </button>
+                    </form>
+
+                    <div id="messages-section" class="mt-12">
+                        <h3 class="text-2xl font-bold text-teal-800 mb-4 border-b pb-2">Messages envoyés (Simulation)</h3>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                            <p class="text-sm text-yellow-800">
+                                <strong>Note :</strong> Ces messages sont sauvegardés uniquement dans votre navigateur pour tester le formulaire. Les autres visiteurs ne les verront pas.
+                            </p>
+                        </div>
+                        
+                        <div id="sent-messages-list" class="space-y-4">
+                            <p id="empty-state" class="text-center text-gray-400 italic py-4">Aucun message pour l'instant.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <footer class="bg-teal-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p>&copy; 2025 EP BUNYAMA. École Primaire sur l'Île d'Idjwi.</p>
+            <p class="mt-2">Merci pour votre soutien ! Powerd by <b>Alphonse</b>design</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fonction principale pour gérer les "pages" (vues)
+        function showView(viewId) {
+            document.querySelectorAll('.page-view').forEach(view => {
+                view.classList.remove('active');
+                view.style.display = 'none';
+            });
+            const targetView = document.getElementById(viewId);
+            if (targetView) {
+                targetView.classList.add('active');
+                targetView.style.display = 'block';
+                // Ramener l'utilisateur en haut de la nouvelle "page"
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // Fermer le menu mobile après la sélection
+                const navLinks = document.getElementById('nav-links');
+                // S'assure que le menu se ferme sur mobile (moins de 768px)
+                if (window.innerWidth < 768) {
+                    navLinks.classList.add('hidden');
+                    navLinks.classList.remove('flex', 'flex-col');
+                }
+            }
+        }
+        
+        // Fonction pour le menu mobile (Burger) - CORRIGÉE
+        function toggleMobileMenu() {
+            const nav = document.getElementById('nav-links');
+            // La méthode toggle est plus propre pour basculer
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('flex');
+            nav.classList.toggle('flex-col');
+        }
+
+        // --- GESTION DE L'AFFICHAGE DES MESSAGES ---
+        const contactForm = document.getElementById('contact-form');
+        const messagesList = document.getElementById('sent-messages-list');
+        const emptyState = document.getElementById('empty-state');
+        const submitButton = document.getElementById('submit-button');
+        const messageBox = document.getElementById('contact-message-box');
+
+        // Charger les messages au démarrage et initialiser la vue
+        window.onload = function() {
+            // Assurez-vous que la vue 'home' est active au chargement initial
+            showView('home');
+            // Charger les messages enregistrés localement
+            loadMessages();
+        };
+
+        // Gestionnaire d'événement pour le formulaire
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêche le rechargement de la page
+
+            // Afficher le spinner de chargement et désactiver le bouton
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Envoi en cours...';
+
+            // Récupérer les données
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const messageText = document.getElementById('message').value;
+            
+            // Utiliser ISOString pour une sauvegarde standard, et toLocaleString pour l'affichage
+            const dateDisplay = new Date().toLocaleString('fr-FR', {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            // Créer l'objet message
+            const newMessage = {
+                name: name,
+                email: email,
+                text: messageText,
+                date: dateDisplay, // Date pour l'affichage
+                timestamp: new Date().toISOString() // Date pour le tri/sauvegarde
+            };
+
+            // Simulation d'un envoi (1.5 seconde de délai)
+            setTimeout(() => {
+                saveMessageLocal(newMessage);
+                addMessageToDisplay(newMessage, true); // Ajouter en premier (prepend)
+
+                // Rétablir le bouton
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Envoyer le Message';
+                
+                // Afficher le message de succès
+                messageBox.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'border-red-400');
+                messageBox.classList.add('bg-green-100', 'text-green-700', 'border-green-400');
+                messageBox.innerHTML = '✅ Message envoyé avec succès (simulé) !';
+
+                // Vider le formulaire
+                contactForm.reset();
+                
+            }, 1500);
+        });
+
+        // Sauvegarde dans le LocalStorage
+        function saveMessageLocal(msg) {
+            let messages = JSON.parse(localStorage.getItem('ep_bunyama_messages')) || [];
+            messages.unshift(msg); // Ajouter au début pour l'ordre chronologique inverse
+            localStorage.setItem('ep_bunyama_messages', JSON.stringify(messages));
+        }
+
+        // Chargement initial des messages depuis le LocalStorage
+        function loadMessages() {
+            // Les messages sont chargés du plus récent au plus ancien grâce à unshift dans saveMessageLocal
+            let messages = JSON.parse(localStorage.getItem('ep_bunyama_messages')) || [];
+            messagesList.innerHTML = ''; // Nettoyer l'affichage avant de recharger
+
+            if (messages.length === 0) {
+                emptyState.style.display = 'block';
+            } else {
+                emptyState.style.display = 'none';
+                messages.forEach(msg => addMessageToDisplay(msg, false)); // Ajouter à la suite
+            }
+        }
+
+        // Affichage d'un seul message dans la liste
+        function addMessageToDisplay(msg, isNew) {
+            emptyState.style.display = 'none';
+
+            const div = document.createElement('div');
+            div.className = 'bg-white p-4 rounded-lg shadow border-l-4 border-teal-500 quick-link-card'; // Ajout de quick-link-card pour un effet
+            div.innerHTML = `
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="font-bold text-gray-800">${msg.name}</h4>
+                    <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">${msg.date}</span>
+                </div>
+                <p class="text-sm text-teal-600 mb-2">${msg.email}</p>
+                <p class="text-gray-700 italic bg-gray-50 p-2 rounded">"${msg.text}"</p>
+            `;
+            
+            if (isNew) {
+                messagesList.prepend(div); // Place le nouveau message en haut
+            } else {
+                messagesList.appendChild(div); // Ajoute les messages chargés à la suite
+            }
+        }
+    </script>
+    </body>
+</html>
